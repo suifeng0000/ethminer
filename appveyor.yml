@@ -32,8 +32,8 @@ install: |
   set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\nvcc\bin
   pip install requests gitpython
   nvcc -V
-set CUDA_INCLUDE_DIRS = C:\CUDA\v%CUDA_VER%\nvcc\
-set CUDA_CUDART_LIBRARY = C:\CUDA\v%CUDA_VER%\nvcc\lib
+set CUDA_INCLUDE_DIRS = "C:\CUDA\v%CUDA_VER%\nvcc"
+set CUDA_CUDART_LIBRARY = "C:\CUDA\v%CUDA_VER%\nvcc\lib"
 build_script:
   - call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Tools\VsMSBuildCmd.bat"
   - set CMAKE_ARGS=-G "Visual Studio 15 2017 Win64" -H. -Bbuild -DETHASHCUDA=ON -DAPICORE=ON -DHUNTER_JOBS_NUMBER=%NUMBER_OF_PROCESSORS%
