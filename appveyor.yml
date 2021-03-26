@@ -28,13 +28,9 @@ install: |
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" curl -L  https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_456.43_win10.exe -o %CUDA_ARCHIVE%.exe -o %CUDA_ARCHIVE%.exe)
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" curl -L https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_windows-exe -o %CUDA_ARCHIVE%.exe)
   if NOT EXIST C:\CUDA mkdir C:\CUDA
-  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" 7z x %CUDA_ARCHIVE%.exe -oC:\CUDA nvcc/* nvrtc*/*)
-  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" 7z x %CUDA_ARCHIVE%.exe -oC:\CUDA compiler/* nvrtc*/*)
-  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" rename C:\CUDA\nvcc v%CUDA_VER%)
-  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" rename C:\CUDA\compiler v%CUDA_VER%)
+  7z x %CUDA_ARCHIVE%.exe -oC:\CUDA
   
-  
-  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\bin
+  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\cuda_nvcc\nvcc\bin
   pip install requests gitpython
   nvcc -V
 
