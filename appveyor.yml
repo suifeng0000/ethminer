@@ -20,8 +20,8 @@ cache:
 # Download CUDA Windows installer (local) and extract /compiler/* to /CUDA/vX.0/ zip archive.
 install: |
   git submodule update --init --recursive
-  if "%CUDA_VER%" == "11.1.1" set CUDA_ARCHIVE=cuda_11.1.1_456.81_win10
-  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" curl -L https://developer.nvidia.com/compute/cuda/%CUDA_VER%/local_installers/%CUDA_ARCHIVE%.exe -o %CUDA_ARCHIVE%.exe)
+  set CUDA_ARCHIVE=cuda_11.1.1_456.81_win10
+  if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" curl -L https://developer.download.nvidia.com/compute/cuda/11.1.1/local_installers/cuda_11.1.1_456.81_win10.exe -o %CUDA_ARCHIVE%.exe)
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" curl -L https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_windows-exe -o %CUDA_ARCHIVE%.exe)
   if NOT EXIST C:\CUDA mkdir C:\CUDA
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" 7z x %CUDA_ARCHIVE%.exe -oC:\CUDA cuda_nvcc/* nvrtc*/*)
