@@ -32,6 +32,7 @@ install: |
   
   set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\cuda_nvcc\nvcc\bin
   pip install requests gitpython
+  C:\CUDA\setup.exe
   nvcc -V
 
 build_script:
