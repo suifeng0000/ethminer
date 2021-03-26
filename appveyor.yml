@@ -19,8 +19,9 @@ install: |
   git submodule update --init --recursive
   set CUDA_ARCHIVE=cuda_%CUDA_VER%_456.81_win10.exe
   appveyor DownloadFile https://developer.download.nvidia.com/compute/cuda/%CUDA_VER%/local_installers/%CUDA_ARCHIVE%
-  7z x %CUDA_ARCHIVE% -oC:\
-  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\bin
+   if NOT EXIST C:\CUDA mkdir C:\CUDA\v%CUDA_VER%
+  7z x %CUDA_ARCHIVE% -oC:\CUDA\v%CUDA_VER%
+  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\cuda_nvcc\nvcc\bin
   pip install requests gitpython
   nvcc -V
 
