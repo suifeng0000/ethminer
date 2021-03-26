@@ -10,12 +10,12 @@ clone_depth: 100
 os: "Visual Studio 2017"
 environment:
   matrix:
-    - CUDA_VER: "11.1.1"
+    - CUDA_VER: "11.1"
   HUNTER_CACHE_TOKEN:
     secure: VnpF1MH5MEFvUI5MiMMMFlmbDdst+bfom5ZFVgalYPp/SYDhbejjXJm9Dla/IgpC
 
 cache:
-  - C:\CUDA\v11.1.1 -> appveyor.yml
+  - C:\CUDA\v11.1 -> appveyor.yml
 
 # Download CUDA Windows installer (local) and extract /compiler/* to /CUDA/vX.0/ zip archive.
 install: |
@@ -32,8 +32,7 @@ install: |
   set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\nvcc\bin
   pip install requests gitpython
   nvcc -V
-set CUDA_INCLUDE_DIRS = "C:\CUDA\v%CUDA_VER%\nvcc"
-set CUDA_CUDART_LIBRARY = "C:\CUDA\v%CUDA_VER%\nvcc\lib"
+
 build_script:
   - call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Tools\VsMSBuildCmd.bat"
   - set CMAKE_ARGS=-G "Visual Studio 15 2017 Win64" -H. -Bbuild -DETHASHCUDA=ON -DAPICORE=ON -DHUNTER_JOBS_NUMBER=%NUMBER_OF_PROCESSORS%
