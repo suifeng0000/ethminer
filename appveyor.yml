@@ -27,11 +27,12 @@ install: |
   7z x %CUDA_ARCHIVE%.exe -oC:\CUDA cuda_cudart/cudart/*
   7z x %CUDA_ARCHIVE%.exe -oC:\CUDA cuda_nvcc/nvcc/*
   copy C:\CUDA\cuda_cudart\cudart\*  C:\CUDA\cuda_cudar
+  copy C:\CUDA\cuda_nvcc/nvcc/*  C:\CUDA\cuda_cudar
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" 7z x %CUDA_ARCHIVE%.exe -oC:\CUDA compiler/* nvrtc*/*)
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" rename C:\CUDA\cuda_cudart v%CUDA_VER%)
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "8.0" rename C:\CUDA\compiler v%CUDA_VER%)
     set CUDA_CUDART_LIBRARY = C:\CUDA\cuda_cudart\cudart\lib\x64
-  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\cudart\bin;C:\CUDA\cuda_nvcc\nvcc\bin
+  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v%CUDA_VER%\bin;C:\CUDA\cuda_nvcc\nvcc\bin
   pip install requests gitpython
   nvcc -V
 
