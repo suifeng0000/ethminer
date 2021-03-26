@@ -22,7 +22,6 @@ install: |
   set CUDA_ARCHIVE=cuda_11.1.0_456.43_win10.exe
   curl -L  https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_456.43_win10.exe -o %CUDA_ARCHIVE%
   if NOT EXIST C:\CUDA mkdir C:\CUDA
-  # if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" 7z x %CUDA_ARCHIVE% -oC:\CUDA nvcc/* nvrtc*/*)
   7z x %CUDA_ARCHIVE% -oC:\CUDA compiler/* nvrtc*/*
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" NEQ "8.0" rename C:\CUDA\nvcc v%CUDA_VER%)
   if NOT EXIST C:\CUDA\v%CUDA_VER% (if "%CUDA_VER%" == "11.1.0" rename C:\CUDA\compiler v%CUDA_VER%)
