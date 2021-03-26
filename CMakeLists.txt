@@ -32,7 +32,7 @@ option(APICORE "Build with API Server support" ON)
 option(BINKERN "Install AMD binary kernels" ON)
 option(DEVBUILD "Log developer metrics" OFF)
 option(USE_SYS_OPENCL "Build with system OpenCL" OFF)
-set(CUDA_CUDART_LIBRARY "C:\CUDA\v11.1\cudart\lib\Win32")
+set(CUDA_CUDART_LIBRARY "C:/CUDA/v11.1/cudart/lib/Win32")
 # propagates CMake configuration options to the compiler
 function(configureProject)
     if (ETHASHCL)
