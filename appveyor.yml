@@ -16,7 +16,6 @@ environment:
 
 cache:
   - C:\CUDA\v11.1 -> appveyor.yml
-
 # Download CUDA Windows installer (local) and extract /compiler/* to /CUDA/vX.0/ zip archive.
 install: |
   git submodule update --init --recursive
